@@ -1,76 +1,54 @@
-#rock paper scissors
-# import PyInputPlus as p
-import random
+from random import *
+from pyinputplus import inputMenu
+x = ['rock', 'paper', 'scissors']
 
-def rock_paper_scissors():
-    k = 0
-    c = 0
+computer = 0
+user = 0
+for ran in range(int(input("Enter number of times: "))):
+    i = inputMenu(x)
+    e = choice(x)
+    print('computer chose ', e, ', on to Next Round!')
 
-    for i in range(3):
-
-        x = input('Enter your value: ')
-
-        y = random.choice(['rock','paper','scissor'])
-        print(y)
-        if x == y:
-            pass
-        if x == 'rock' and y == 'scissor':
-            c += 1
-
-        elif x == 'scissor' and y == 'rock':
-
-            k += 1
-        elif x == 'paper' and y== 'scissor':
-
-            k += 1
-        elif x == 'scissor' and y == 'paper':
-            c+=1
-
-        elif x == 'paper' and y== 'scissor':
-
-            k+=1
-    if c > k:
-        print(f'You won {c}')
-    elif c==k:
-        print(f'Equal,{k},{c}')
-    else:
-        print(f'Try again.\nComputer won with {k} points.')
-
-
-
-
-print(rock_paper_scissors())
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    if i == 'rock':
+        i = 2
+        if e == 'rock':
+            e = 2
+        elif e == 'paper':
+            e = 3
+        elif e == 'scissors':
+            e = 1
+        if e > i:
+            computer +=1
+        if i > e:
+            user +=1
+    if i=='paper':
+        i = 2
+        if e == 'paper':
+            e = 2
+        elif e == 'scissors':
+            e = 3
+        elif e == 'rock':
+            e = 1
+        if e > i:
+            computer += 1
+        if i > e:
+            user += 1
+    if i == 'scissors':
+        i = 2
+        if e == 'scissors':
+            e = 2
+        elif e == 'rock':
+            e = 3
+        elif e == 'paper':
+            e = 1
+        if e > i:
+            computer += 1
+        if i > e:
+            user += 1
+print('computer: ', computer , 'user: ', user)
+if computer > user :
+    print('computer wins!')
+elif user > computer:
+    print('user wins!')
+else:
+    print('draw')
